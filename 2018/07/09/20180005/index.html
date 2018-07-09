@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="http://www.ronnx.top">
   <title>在RecyclerView中添加头部和尾部 | RoNnx&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 界面就是实现一个有头部、内容部分和底部的 RecyclerView，头部为置顶的公告，底部有一个按钮可以添加 item以下为实际界面图： 2. 实现首先先新建一个class文件继承 RecyclerView.Adapter  代码如下：123456789101112131415161718public class Adapter extends RecyclerView.Adapter&amp;l">
+  <meta name="description" content="RecyclerView的进阶用法">
 <meta name="keywords" content="原创,Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在RecyclerView中添加头部和尾部">
 <meta property="og:url" content="http://www.ronnx.top/2018/07/09/20180005/index.html">
 <meta property="og:site_name" content="RoNnx&#39;s Blog">
-<meta property="og:description" content="1. 界面就是实现一个有头部、内容部分和底部的 RecyclerView，头部为置顶的公告，底部有一个按钮可以添加 item以下为实际界面图： 2. 实现首先先新建一个class文件继承 RecyclerView.Adapter  代码如下：123456789101112131415161718public class Adapter extends RecyclerView.Adapter&amp;l">
+<meta property="og:description" content="RecyclerView的进阶用法">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://pbbpiv3mx.bkt.clouddn.com/blog_05_02.jpg">
 <meta property="og:image" content="http://pbbpiv3mx.bkt.clouddn.com/blog_05_03.gif">
-<meta property="og:updated_time" content="2018-07-09T05:16:27.805Z">
+<meta property="og:updated_time" content="2018-07-09T05:19:40.225Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在RecyclerView中添加头部和尾部">
-<meta name="twitter:description" content="1. 界面就是实现一个有头部、内容部分和底部的 RecyclerView，头部为置顶的公告，底部有一个按钮可以添加 item以下为实际界面图： 2. 实现首先先新建一个class文件继承 RecyclerView.Adapter  代码如下：123456789101112131415161718public class Adapter extends RecyclerView.Adapter&amp;l">
+<meta name="twitter:description" content="RecyclerView的进阶用法">
 <meta name="twitter:image" content="http://pbbpiv3mx.bkt.clouddn.com/blog_05_02.jpg">
   
     <link rel="alternative" href="/atom.xml" title="RoNnx&#39;s Blog" type="application/atom+xml">
@@ -199,7 +199,7 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
+        <p>RecyclerView的进阶用法<br><a id="more"></a></p>
 <h1 id="1-界面"><a href="#1-界面" class="headerlink" title="1. 界面"></a>1. 界面</h1><p>就是实现一个有头部、内容部分和底部的 RecyclerView，头部为置顶的公告，底部有一个按钮可以添加 item<br>以下为实际界面图：<br><img src="http://pbbpiv3mx.bkt.clouddn.com/blog_05_02.jpg" alt="效果图"></p>
 <h1 id="2-实现"><a href="#2-实现" class="headerlink" title="2. 实现"></a>2. 实现</h1><p>首先先新建一个class文件继承 <strong>RecyclerView.Adapter</strong>  代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Adapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">RecyclerView</span>.<span class="title">ViewHolder</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> RecyclerView.<span class="function">ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(RecyclerView.ViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>由于头部尾部和中间的 item 的布局都是不一样的所以我们需要用到 RecyclerView.Adapter 中的 <strong>getItemViewType(int position)</strong> 这个方法来判断 item 的类型，然后在 onCreateViewHolder(ViewGroup parent, int viewType) 中根据getItemViewType 中返回的 <strong>viewType</strong> 来进行选择对应的布局文件和 ViewHolder，相关代码如下：</p>
@@ -448,6 +448,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">原创</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
@@ -456,19 +464,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">原创</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
             
             <div class="clearfix"></div>
