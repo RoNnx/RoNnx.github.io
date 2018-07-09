@@ -9,20 +9,20 @@
   <title>算法学习笔记之初级链表 | RoNnx&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="记录一下最近刷的比较有意思的题">
-<meta name="keywords" content="原创,算法,学习笔记">
+<meta name="keywords" content="算法,学习笔记,原创">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法学习笔记之初级链表">
 <meta property="og:url" content="http://www.ronnx.top/2018/06/17/20180004/index.html">
 <meta property="og:site_name" content="RoNnx&#39;s Blog">
 <meta property="og:description" content="记录一下最近刷的比较有意思的题">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://pbbpiv3mx.bkt.clouddn.com/bcf9b2fb6a5e4b53s.png">
-<meta property="og:image" content="http://pbbpiv3mx.bkt.clouddn.com/61790d470c299c2fs.png">
-<meta property="og:updated_time" content="2018-07-04T04:22:37.705Z">
+<meta property="og:image" content="http://pbbpiv3mx.bkt.clouddn.com/blog_04_01.png">
+<meta property="og:image" content="http://pbbpiv3mx.bkt.clouddn.com/blog_04_02.png">
+<meta property="og:updated_time" content="2018-07-09T02:39:10.199Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法学习笔记之初级链表">
 <meta name="twitter:description" content="记录一下最近刷的比较有意思的题">
-<meta name="twitter:image" content="http://pbbpiv3mx.bkt.clouddn.com/bcf9b2fb6a5e4b53s.png">
+<meta name="twitter:image" content="http://pbbpiv3mx.bkt.clouddn.com/blog_04_01.png">
   
     <link rel="alternative" href="/atom.xml" title="RoNnx&#39;s Blog" type="application/atom+xml">
   
@@ -206,7 +206,7 @@ var _hmt = _hmt || [];
 <h6 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a><strong>进阶</strong></h6><p>你能否不使用额外空间解决此题？</p>
 </blockquote>
 <p><strong>我的思路与解答（1ms）：</strong></p>
-<p>首先理解环形链表的概念，我开始以为只有一种，就是头尾相连的链表就是环形链表，如下图；<br><img src="http://pbbpiv3mx.bkt.clouddn.com/bcf9b2fb6a5e4b53s.png" alt="图1"><br>但其实还有一种比较特殊一点的环形链表，如下图；<br><img src="http://pbbpiv3mx.bkt.clouddn.com/61790d470c299c2fs.png" alt="图2"></p>
+<p>首先理解环形链表的概念，我开始以为只有一种，就是头尾相连的链表就是环形链表，如下图；<br><img src="http://pbbpiv3mx.bkt.clouddn.com/blog_04_01.png" alt="图1"><br>但其实还有一种比较特殊一点的环形链表，如下图；<br><img src="http://pbbpiv3mx.bkt.clouddn.com/blog_04_02.png" alt="图2"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123;</span></span><br><span class="line"><span class="comment"> *         val = x;</span></span><br><span class="line"><span class="comment"> *         next = null;</span></span><br><span class="line"><span class="comment"> *     &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="comment">/** </span></span><br><span class="line"><span class="comment">        *  主要思路：用双指针解法，slow和fast，都从头部开始</span></span><br><span class="line"><span class="comment">        *  slow每次走一步，fast每次走两步</span></span><br><span class="line"><span class="comment">        *  这样不论是头尾相连的环形链表还是特殊的环形链表</span></span><br><span class="line"><span class="comment">        *  在若干步后slow和fast会相遇</span></span><br><span class="line"><span class="comment">		*/</span></span><br><span class="line">        ListNode slow = head;</span><br><span class="line">        ListNode fast = head;</span><br><span class="line">        <span class="keyword">while</span>(fast.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next;</span><br><span class="line">            <span class="keyword">if</span>(fast.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">                fast = fast.next;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(slow.equals(fast))&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>小结：</strong></p>
 <p>一开始只想到了头尾相连的链表，去搜索了相关概念后才知道原来还有另一种，但是这题做起来思路还是比较明确。</p>
@@ -236,15 +236,15 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">原创</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">原创</a>
         		</li>
       		
 		</ul>
@@ -316,6 +316,15 @@ var _hmt = _hmt || [];
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/07/09/20180005/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          在RecyclerView中添加头部和尾部
+        
+      </div>
+    </a>
   
   
     <a href="/2018/06/04/20180003/" id="article-nav-older" class="article-nav-link-wrap">
@@ -463,7 +472,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -471,11 +484,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
