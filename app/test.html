@@ -56,7 +56,8 @@
 
         // 接收安卓发来的消息 并返回给安卓通知
         bridge.registerHandler("refresh", function(data, responseCallback) {
-            document.getElementById("show").innerHTML = "";
+            //document.getElementById("show").innerHTML = "";
+            window.reload();
             var responseData = "刷新成功";
             responseCallback(responseData);
         });
