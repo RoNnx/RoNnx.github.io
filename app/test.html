@@ -20,6 +20,7 @@
 </body> 
 <script> 
     function getUserInfo(){ 
+        alert("click");
         window.WebViewJavascriptBridge.callHandler( 
             'getUserInfo', 
             {'info': 'I am JS, want to get UserInfo from Java'}, 
