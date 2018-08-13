@@ -19,6 +19,7 @@
     </p>
 </div>
 </body>
+<script src="http://ronnx.top/app/WebViewJavascriptBridge.js"></script>
 <script>
     function getUserInfo(){
         window.WebViewJavascriptBridge.callHandler(
@@ -55,7 +56,7 @@
 
         // 接收安卓发来的消息 并返回给安卓通知
         bridge.registerHandler("refresh", function(data, responseCallback) {
-            window.reload();
+            document.getElementById("show").innerHTML = "";
             var responseData = "刷新成功";
             responseCallback(responseData);
         });
